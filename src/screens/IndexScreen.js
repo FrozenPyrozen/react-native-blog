@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { StyleSheet, Button, Text, View, FlatList } from 'react-native';
-import BlogContext from '../context/BlogContext';
+import { Context } from '../context/BlogContext';
 
 const IndexScreen = () => {
-  const { state, actions } = useContext(BlogContext);
+  const { state, actions } = useContext(Context);
   const { addBlogPost } = actions;
 
   return (
