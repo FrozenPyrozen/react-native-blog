@@ -48,6 +48,16 @@ const IndexScreen = ({ navigation }) => {
   );
 };
 
+IndexScreen.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: (
+      <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+        <MaterialIcons name="add" style={styles.addIcon} />
+      </TouchableOpacity>
+    ),
+  };
+};
+
 const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
@@ -57,11 +67,15 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     borderColor: 'gray',
   },
-  deleteIcon: {
-    fontSize: 24,
-  },
   title: {
     fontSize: 18,
+  },
+  deleteIcon: {
+    fontSize: 30,
+  },
+  addIcon: {
+    marginRight: 10,
+    fontSize: 30,
   },
 });
 
