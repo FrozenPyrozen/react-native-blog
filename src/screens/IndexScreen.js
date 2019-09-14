@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -11,7 +11,17 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 const IndexScreen = ({ navigation }) => {
   const { state, actions } = useContext(Context);
-  const { deleteBlogPost } = actions;
+  const { deleteBlogPost, getBlogPosts } = actions;
+
+  useEffect(() => {
+    getBlogPosts();
+
+    const listener = navigation.addListener('didFocus', () => {
+      getBlogPosts();
+    });
+
+    return () => listener.remove();
+  }, []);
 
   return (
     <View>
