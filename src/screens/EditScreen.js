@@ -23,7 +23,7 @@ const EditScreen = ({ navigation }) => {
             id,
             title,
             content,
-            callback: () => navigation.pop(),
+            callback: () => navigation.navigate('Index'),
           })
         }
       />
