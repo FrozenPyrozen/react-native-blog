@@ -10,7 +10,7 @@ import {
 import { Context } from '../context/BlogContext';
 import { MaterialIcons } from '@expo/vector-icons';
 
-const IndexScreen = () => {
+const IndexScreen = ({ navigation }) => {
   const { state, actions } = useContext(Context);
   const { addBlogPost, deleteBlogPost } = actions;
 
@@ -30,14 +30,18 @@ const IndexScreen = () => {
         data={state}
         keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.row}>
-            <Text style={styles.title}>
-              {item.title} - id: {item.id}
-            </Text>
-            <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
-              <MaterialIcons style={styles.deleteIcon} name="delete" />
-            </TouchableOpacity>
-          </View>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Show', { id: item.id })}
+          >
+            <View style={styles.row}>
+              <Text style={styles.title}>
+                {item.title} - id: {item.id}
+              </Text>
+              <TouchableOpacity onPress={() => deleteBlogPost(item.id)}>
+                <MaterialIcons style={styles.deleteIcon} name="delete" />
+              </TouchableOpacity>
+            </View>
+          </TouchableOpacity>
         )}
       />
     </View>
