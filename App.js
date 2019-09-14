@@ -13,7 +13,7 @@ const navigatior = createStackNavigator(
     Create: CreateScreen,
   },
   {
-    initialRouteName: 'Create',
+    initialRouteName: 'Index',
     defaultNavigationOptions: {
       title: 'Blogs',
     },

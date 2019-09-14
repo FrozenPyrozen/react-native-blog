@@ -6,6 +6,9 @@ const CreateScreen = ({ navigation }) => {
   const [title, setTitle] = useState('');
   const [content, setContent] = useState('');
 
+  const { actions } = useContext(Context);
+  const { addBlogPost } = actions;
+
   return (
     <View>
       <Text style={styles.label}>Enter Title:</Text>
@@ -20,7 +23,17 @@ const CreateScreen = ({ navigation }) => {
         value={content}
         onChangeText={text => setContent(text)}
       />
-      <Button title="Add Blog post" />
+
+      <Button
+        title="Add Blog post"
+        onPress={() => {
+          addBlogPost({
+            title,
+            content,
+            callback: () => navigation.navigate('Index'),
+          });
+        }}
+      />
     </View>
   );
 };

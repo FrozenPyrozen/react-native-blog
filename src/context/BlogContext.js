@@ -13,7 +13,11 @@ const blogReducer = (state, action) => {
 };
 
 const addBlogPost = dispatch => {
-  return blogPost => dispatch({ type: 'add_blogpost', payload: blogPost });
+  return blogPost => {
+    const { callback, ...data } = blogPost;
+    dispatch({ type: 'add_blogpost', payload: { ...data, id: Date.now() } });
+    callback();
+  };
 };
 
 const deleteBlogPost = dispatch => {
