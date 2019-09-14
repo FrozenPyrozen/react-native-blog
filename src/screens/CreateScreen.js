@@ -18,7 +18,7 @@ const CreateScreen = ({ navigation }) => {
           addBlogPost({
             title,
             content,
-            callback: () => navigation.navigate('Index'),
+            callback: () => navigation.pop(),
           })
         }
       />
